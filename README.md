@@ -23,5 +23,5 @@ Conexión a Internet para acceder a servicios de geolocalización y datos de mon
 - Asi tambien en la pagina principal veras en la parte superior de la ventana un boton "see all location" al hacer click en dicho boton veras todas las ubicaciones captadas por el sitio web.
 
 # Nota// 
-La base de datos esta desplegada en el el servicio clever cloud
-para proceder con el guardado deberia crear el archivo .env y pasarle las variables de entorno.
+La base de datos esta desplegada en un servicio de la nube llamado clever cloud
+para proceder con el uso de dicha base de datos deberia crear el archivo .env en la carpeta "backend" del proyecto y pasarle las variables de entorno correspondientes.
