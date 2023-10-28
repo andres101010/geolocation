@@ -62,6 +62,23 @@ class Geolocation {
       });
     });
   }
+
+  async sendLocation(){
+    try {
+      const sendData = await new Promise((resolve, reject) => {
+        dbConnection.connection.query('SELECT * FROM visitas', (error,result)=>{
+          if(!error){
+            resolve({data: result});
+            }else{
+              reject(error);
+              }
+        })
+      })
+      return {sendData}
+    } catch (error) {
+      throw Error(error)
+    }
+  }
 }
 
 module.exports = Geolocation;

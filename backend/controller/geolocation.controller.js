@@ -12,3 +12,13 @@ exports.location = catchAsync(async(req,res,next)=>{
         });
     
 })
+exports.sendLocation = catchAsync(async(req,res,next)=>{
+
+        const {sendData} = await geolocation.sendLocation()
+        res.status(200).json({
+            status: 'success',
+            message: 'Successful send location',
+            sendData
+        });
+    
+})
