@@ -11,16 +11,15 @@ Conexión a Internet para acceder a servicios de geolocalización y datos de mon
 # 2 Navega al directorio del proyecto:
 - cd geolocation
 - cd frontend
-- aplica el comando npm intall
+- aplica el comando : npm install
 - levanta el servidor con el comando : npm run dev
-- luego en una teerminal diferente navega a la carpeta backend
+- luego en una terminal diferente navega a la carpeta backend
 - cd backend
-- aplica el comando npm intall
+- aplica el comando : npm install
 - levanta el servidor con el comando : npm run dev
 # Uso
 - Ingresa a la página principal.
-- En la pagina principa veras un boton que dice "Click here" haz click y
-- Verás la moneda aplicable a tu ubicación junto con la información relacionada.
+- En la pagina principa veras un boton "Click here" haz click y Verás la moneda aplicable a tu ubicación junto con la información relacionada.
 - Asi tambiem en la pagina principal veras en la parte superior de la ventana un boton "see all location" al hacer click en dicho boton veras todas las ubicaciones captadas por el sitio web.
 
 # Nota// 
