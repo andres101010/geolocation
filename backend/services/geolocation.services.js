@@ -4,46 +4,32 @@ const axios = require("axios");
 class Geolocation {
   async location() {
     try {
-      //  Obtener el código del país
+      // Obtener la información de geolocalización
       const geoResponse = await axios.get('https://api.vatcomply.com/geolocate');
-      const countryCode = geoResponse.data.countryCode;
+      const countryInfo = geoResponse.data;
 
-      //  Obtener información de las monedas
+      // Obtener información de las monedas
       const currenciesResponse = await axios.get('https://api.vatcomply.com/currencies');
       const currencies = currenciesResponse.data;
+      const countryCode = countryInfo.countryCode;
 
       if (currencies.hasOwnProperty(countryCode)) {
-        //  Moneda aplicable encontrada en la API de monedas
-        const applicableCurrency = currencies[countryCode];
+        // Moneda aplicable encontrada en la API de monedas
+        const currency = currencies[countryCode];
         const visitData = {
           pais: countryCode,
           moneda: applicableCurrency.name,
           fecha: new Date(),
         };
 
-        //  Guardar la visita en la base de datos
-        const insertResult = await new Promise((resolve, reject) => {
-          dbConnection.connection.query('INSERT INTO visitas SET ?', visitData, (err, result) => {
-            if (err) {
-              reject(err);
-            } else {
-              resolve(result);
-            }
-          });
-        });
-
-        // Cierra la conexión a la base de datos
-        dbConnection.connection.end();
-
-        return { applicableCurrency, defaultCurrency: null };
+        
+        await this.saveVisit(visitData);
+         // Agregar la fecha al objeto applicableCurrency
+        currency.fecha = new Date();
+        return { currency };
       } else {
-        //  Moneda no encontrada en la API de monedas
-        // Completar la información de la moneda con datos de la API de geolocalización
-        const geoData = await axios.get('https://api.vatcomply.com/geolocate');
-        const countryInfo = geoData.data;
-        console.log(countryInfo)
-        // Guardar la visita en la base de datos con la información de geolocalización
-        const defaultCurrency = {
+        // Moneda no encontrada en la API de monedas
+        const currency = {
           name: countryInfo.name,
           symbol: countryInfo.currency,
           fecha: new Date()
@@ -55,24 +41,27 @@ class Geolocation {
           fecha: new Date(),
         };
 
-        const insertResult = await new Promise((resolve, reject) => {
-          dbConnection.connection.query('INSERT INTO visitas SET ?', visitData, (err, result) => {
-            if (err) {
-              reject(err);
-            } else {
-              resolve(result);
-            }
-          });
-        });
+        // Guardar la visita en la base de datos
+        await this.saveVisit(visitData);
 
-        // Cierra la conexión a la base de datos
-        dbConnection.connection.end();
-
-        return { applicableCurrency: null, defaultCurrency };
+        return { currency };
       }
     } catch (error) {
       throw Error(error);
     }
   }
+
+  async saveVisit(visitData) {
+    return new Promise((resolve, reject) => {
+      dbConnection.connection.query('INSERT INTO visitas SET ?', visitData, (err, result) => {
+        if (err) {
+          reject(err);
+        } else {
+          resolve(result);
+        }
+      });
+    });
+  }
 }
-module.exports = Geolocation
+
+module.exports = Geolocation;
