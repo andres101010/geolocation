@@ -46,6 +46,7 @@ class Geolocation {
         const defaultCurrency = {
           name: countryInfo.name,
           symbol: countryInfo.currency,
+          fecha: new Date()
         };
 
         const visitData = {
