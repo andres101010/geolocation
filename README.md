@@ -11,18 +11,17 @@ Conexión a Internet para acceder a servicios de geolocalización y datos de mon
 # 2 Navega al directorio del proyecto:
 - cd geolocation
 - cd frontend
-- aplica el comando npm intall
+- aplica el comando : npm install
 - levanta el servidor con el comando : npm run dev
-- luego en una teerminal diferente navega a la carpeta backend
+- luego en una terminal diferente navega a la carpeta backend
 - cd backend
-- aplica el comando npm intall
+- aplica el comando : npm install
 - levanta el servidor con el comando : npm run dev
 # Uso
 - Ingresa a la página principal.
-- En la pagina principa veras un boton que dice "Click here" haz click y
-- Verás la moneda aplicable a tu ubicación junto con la información relacionada.
-- Asi tambiem en la pagina principal veras en la parte superior de la ventana un boton "see all location" al hacer click en dicho boton veras todas las ubicaciones captadas por el sitio web.
+- En la pagina principa veras un boton "Click here" haz click y Verás la moneda aplicable a tu ubicación junto con la información relacionada.
+- Asi tambien en la pagina principal veras en la parte superior de la ventana un boton "see all location" al hacer click en dicho boton veras todas las ubicaciones captadas por el sitio web.
 
 # Nota// 
-La base de datos esta desplegada en el el servicio clever cloud
-para proceder con el guardado deberia crear el archivo .env y pasarle las variables de entorno.
+La base de datos esta desplegada en un servicio de la nube llamado clever cloud
+para proceder con el uso de dicha base de datos deberia crear el archivo .env en la carpeta "backend" del proyecto y pasarle las variables de entorno correspondientes.

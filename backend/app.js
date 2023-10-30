@@ -27,7 +27,7 @@ app.use(
   }),
 );
  //Prueba de conexion de base de datos
-dbConnection.connection.connect((err)=>{
+dbConnection.connection.getConnection((err)=>{
   if (err){
     console.log("Error al conectar a la base de datos: "+ err);
   }
