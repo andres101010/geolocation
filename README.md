@@ -21,6 +21,7 @@ Conexión a Internet para acceder a servicios de geolocalización y datos de mon
 - Ingresa a la página principal.
 - En la pagina principa veras un boton que dice "Click here" haz click y
 - Verás la moneda aplicable a tu ubicación junto con la información relacionada.
+- Asi tambiem en la pagina principal veras en la parte superior de la ventana un boton "see all location" al hacer click en dicho boton veras todas las ubicaciones captadas por el sitio web.
 
 # Nota// 
 La base de datos esta desplegada en el el servicio clever cloud
