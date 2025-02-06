@@ -2,10 +2,11 @@ const dbConnection = require("../dataBase/connection");
 const axios = require("axios");
 
 class Geolocation {
-  async location() {
+  async location(ip) {
     try {
+      
       // Obtener la información de geolocalización
-      const geoResponse = await axios.get('https://api.vatcomply.com/geolocate');
+      const geoResponse = await axios.get(`https://api.vatcomply.com/geolocate?ip=${ip}`);
       console.log("geoResponse", geoResponse.data);
       const countryInfo = geoResponse.data;
 
