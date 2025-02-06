@@ -4,13 +4,12 @@ const catchAsync = require('../helpers/catchAsync');
 
 exports.location = catchAsync(async(req,res,next)=>{
         const {ip} = req.params;
-        // const {currency} = await geolocation.location(ip)
-        const countryInfo = await geolocation.location(ip); // ✅ Recibe todo el objeto
-        console.log("countryInfo:", countryInfo); // Depuración
+        const {currency} = await geolocation.location(ip)
+        
         res.status(200).json({
             status: 'success',
             message: 'Successful location',
-            data: countryInfo
+            currency
         });
     
 })
