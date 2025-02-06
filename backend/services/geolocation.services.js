@@ -7,8 +7,15 @@ class Geolocation {
       console.log("ip", ip);
       // Obtener la información de geolocalización
       const geoResponse = await axios.get(`https://api.vatcomply.com/geolocate?ip=${ip}`);
-      console.log("geoResponse", geoResponse.data);
+      // console.log("geoResponse", geoResponse.data);
       const countryInfo = geoResponse.data;
+
+      const geoResponse2 = await axios.get(`https://ipapi.co/${ip}/json/`);
+      console.log("geoResponse2", geoResponse2.data);
+
+      const geoResponse3 = await axios.get(`https://ipwhois.app/json/${ip}`);
+      console.log("geoResponse3", geoResponse3.data);
+
 
       // Obtener información de las monedas
       const currenciesResponse = await axios.get('https://api.vatcomply.com/currencies');
