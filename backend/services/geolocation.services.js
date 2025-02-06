@@ -19,7 +19,7 @@ class Geolocation {
 
       // Obtener información de las monedas
       const currenciesResponse = await axios.get('https://api.vatcomply.com/currencies');
-      console.log("currenciesResponse", currenciesResponse.data);
+      // console.log("currenciesResponse", currenciesResponse.data);
       const currencies = currenciesResponse.data;
       const countryCode = countryInfo.countryCode;
 
