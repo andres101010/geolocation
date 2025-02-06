@@ -4,7 +4,7 @@ const axios = require("axios");
 class Geolocation {
   async location(ip) {
     try {
-      
+      console.log("ip", ip);
       // Obtener la información de geolocalización
       const geoResponse = await axios.get(`https://api.vatcomply.com/geolocate?ip=${ip}`);
       console.log("geoResponse", geoResponse.data);
