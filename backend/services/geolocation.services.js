@@ -6,10 +6,12 @@ class Geolocation {
     try {
       // Obtener la información de geolocalización
       const geoResponse = await axios.get('https://api.vatcomply.com/geolocate');
+      console.log("geoResponse", geoResponse.data);
       const countryInfo = geoResponse.data;
 
       // Obtener información de las monedas
       const currenciesResponse = await axios.get('https://api.vatcomply.com/currencies');
+      console.log("currenciesResponse", currenciesResponse.data);
       const currencies = currenciesResponse.data;
       const countryCode = countryInfo.countryCode;
 
