@@ -14,8 +14,9 @@ class Geolocation {
       // console.log("geoResponse3", geoResponse3.data);
       
       const geoResponse = await axios.get(`https://ipapi.co/${ip}/json/`);
-      console.log("geoResponse2", geoResponse.data);
+      console.log("geoResponse", geoResponse.data);
       const countryInfo = geoResponse.data;
+      console.log("countryInfo", countryInfo);
 
 
 
@@ -25,7 +26,9 @@ class Geolocation {
       const currencies = currenciesResponse.data;
       // const countryCode = countryInfo.countryCode;
       const countryCode = countryInfo.country_code;
-
+      console.log("countryCode", countryCode);
+      console.log("currencies",currencies);
+      console.log("aaaa", currencies.hasOwnProperty(countryCode));
       if (currencies.hasOwnProperty(countryCode)) {
         // Moneda aplicable encontrada en la API de monedas
         const currency = currencies[countryCode];
