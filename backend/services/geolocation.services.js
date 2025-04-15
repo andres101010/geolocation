@@ -2,19 +2,33 @@ const dbConnection = require("../dataBase/connection");
 const axios = require("axios");
 
 class Geolocation {
-  async location() {
+  async location(ip) {
     try {
+      console.log("ip", ip);
       // Obtener la información de geolocalización
-      const geoResponse = await axios.get('https://api.vatcomply.com/geolocate');
-      console.log("geoResponse", geoResponse.data);
+      // const geoResponse = await axios.get(`https://api.vatcomply.com/geolocate?ip=${ip}`);
+      // console.log("geoResponse", geoResponse.data);
+      // const countryInfo = geoResponse.data;
+
+      // const geoResponse3 = await axios.get(`https://ipwhois.app/json/${ip}`);
+      // console.log("geoResponse3", geoResponse3.data);
+      
+      const geoResponse = await axios.get(`https://ipapi.co/${ip}/json/`);
+      // console.log("geoResponse", geoResponse.data);
       const countryInfo = geoResponse.data;
+      // console.log("countryInfo", countryInfo);
+
+
 
       // Obtener información de las monedas
       const currenciesResponse = await axios.get('https://api.vatcomply.com/currencies');
-      console.log("currenciesResponse", currenciesResponse.data);
+      // console.log("currenciesResponse", currenciesResponse.data);
       const currencies = currenciesResponse.data;
-      const countryCode = countryInfo.countryCode;
-
+      // const countryCode = countryInfo.countryCode;
+      const countryCode = countryInfo.country_code;
+      // console.log("countryCode", countryCode);
+      // console.log("currencies",currencies);
+      // console.log("aaaa", currencies.hasOwnProperty(countryCode));
       if (currencies.hasOwnProperty(countryCode)) {
         // Moneda aplicable encontrada en la API de monedas
         const currency = currencies[countryCode];
@@ -32,13 +46,13 @@ class Geolocation {
       } else {
         // Moneda no encontrada en la API de monedas
         const currency = {
-          name: countryInfo.name,
+          name: countryInfo.country_name,
           symbol: countryInfo.currency,
           fecha: new Date()
         };
 
         const visitData = {
-          pais: countryInfo.name,
+          pais: countryInfo.country_name,
           moneda: countryInfo.currency || defaultCurrency.name,
           fecha: new Date(),
         };
